@@ -36,12 +36,17 @@ public class Solution{
     if(l2 == null){
       return l1;
     }
-    ListNode ret = l1.val > l2.val ? l2: l1;
+    ListNode ret;
+    if(l1.val > l2.val){
+        ret = l2;
+        l2 = l2.next;
+    } else {
+        ret = l1;
+        l1 = l1.next;
+    }
     ListNode tmp = ret;
 
     while(l1 != null && l2 != null){
-      System.out.println(l1.val);
-      System.out.println(l2.val);
       if(l1.val > l2.val){
         tmp.next = l2;
         tmp = l2;

@@ -32,6 +32,22 @@ class Solution(object):
             tmp_result = ListNode(tmp%10)
             pre_node.next = tmp_result
             jw = tmp / 10
+        while l1.next:
+            l1 = l1.next
+            pre_node = tmp_result
+            tmp = l1.val + jw
+            tmp_result = ListNode(tmp%10)
+            pre_node.next = tmp_result
+            jw = tmp / 10
+        while l2.next:
+            l2 = l2.next
+            pre_node = tmp_result
+            tmp = l2.val + jw
+            tmp_result = ListNode(tmp%10)
+            pre_node.next = tmp_result
+            jw = tmp / 10
+        if jw != 0:
+            tmp_result.next = ListNode(jw)
         return lr_result
 
 def init_list(vlist):
@@ -46,14 +62,17 @@ def init_list(vlist):
     return root
 
 def print_list(l):
+    tmp = []
     while l:
-        print l.val
+        tmp.append(l.val)
         l = l.next
+    print tmp
 
 if __name__ == "__main__":
     sl = Solution()
     l1 = init_list([2, 4, 3])
-    print_list(l1)
     l2 = init_list([5, 6, 4])
-    print_list(l2)
+    print_list(sl.addTwoNumbers(l1, l2))
+    l1 = init_list([5])
+    l2 = init_list([5])
     print_list(sl.addTwoNumbers(l1, l2))

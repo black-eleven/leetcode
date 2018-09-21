@@ -43,33 +43,62 @@ public class Solution {
       if(nums2.length == 0){
         return ret;
       }
-      int[] tmp1 = {nums1[0], nums2[0]};
 
-      ret.add(tmp1);
-      while((i < nums1.length || j < nums2.length) && m < k){
-        if(i+1 >= nums1.length){
-          j++;
-        }else if(j+1 >= nums2.length){
-          i++;
-        }else if((nums1[i+1] + nums2[j]) > (nums1[i] + nums2[j+1])){
-          j++;
-        }else{
-          i++;
+      int min_sum = nums1[0] + nums2[0];
+      int i_sum = min_sum;
+      int j_sum = min_sum;
+
+      while((i < nums1.length && j < nums2.length) && m < k){
+
+        int tmp_i = i;
+        while(tmp_i >= 0 && j+1 < nums2.length && min_sum >= nums1[tmp_i]+nums2[j+1]){
+            System.out.println("A: " + min_sum + ", " + nums1[i] + ", " + nums2[j+1]);
+            i_sum = nums1[tmp_i] + nums2[j+1];
+            tmp_i--;
         }
-        if(i >= nums1.length || j >= nums2.length){
-          break;
+        if(tmp_i < 0){
+            tmp_i++;
         }
-        int[] tmp2 = {nums1[i], nums2[j]};
-        ret.add(tmp2);
-        m++;
+
+        int tmp_j = j;
+        while (tmp_j >= 0 && i+1< nums1.length && min_sum >= nums1[i+1]+nums2[tmp_j]) {
+            //System.out.println("B:" + min_sum + ", " + nums1[i+1] + ", " + nums2[j]);
+            j_sum = nums1[i+1] + nums2[tmp_j];
+            tmp_j--;
+        }
+        if(tmp_j < 0){
+            tmp_j++;
+        }
+
+        if(i_sum > j_sum) {
+            min_sum = j_sum;
+            //i++;
+            j = tmp_j;
+        } else {
+            min_sum = i_sum;
+            //j++;
+            i = tmp_i;
+        }
+
+        //System.out.println(min_sum);
+
+        // int[] tmp = {nums1[i], nums2[j]};
+        // ret.add(tmp);
+        // tmp_sum = nums1[i] + nums2[j];
       }
       return ret;
     }
 
     public static void main(String[] args){
       Solution s = new Solution();
-      int[] nums1 = {1,2};
-      int[] nums2 = {3};
-      System.out.println(s.kSmallestPairs(nums1, nums2, 3));
+      int[] nums1 = {1, 1, 2};
+      int[] nums2 = {1, 2, 3};
+      List<int[]> ret = s.kSmallestPairs(nums1, nums2, 10);
+      for(int [] a: ret) {
+          for(int i=0; i < a.length; i++) {
+            //System.out.print(a[i] + " ");
+          }
+          //System.out.println();
+      }
     }
 }

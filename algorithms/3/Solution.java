@@ -1,3 +1,4 @@
+
 public class Solution {
     public int lengthOfLongestSubstring(String s) {
         int pptr = 0;
@@ -27,5 +28,12 @@ public class Solution {
         }
 
         return max;
+    }
+
+    public static void main(String[] args) {
+        Solution s = new Solution();
+        String ss = "pwwkew";
+        int ret = s.lengthOfLongestSubstring(ss);
+        System.out.println(ret);
     }
 }

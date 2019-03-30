@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+
 class Solution(object):
     def maxChunksToSorted(self, arr):
         """
@@ -14,6 +15,7 @@ class Solution(object):
                     ret += 1
                 i = j
         return ret
+
 
 if __name__ == "__main__":
     s = Solution()

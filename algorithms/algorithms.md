@@ -3,10 +3,13 @@
 - java done
 - python done
 
-## 3. Longest Substring Without Repeating Characters
+### 3. Longest Substring Without Repeating Characters
 
 - java done
 - python done
+
+### 4. Median of Two Sorted Arrays
+
 
 ### 21. Merge Two Sorted Lists
 
@@ -24,14 +27,14 @@
 
 - java done
 
-
 ### 260. Single Number III
 
 - python done
-
 
 ### 295. Find Median from Data Stream
 
 - python done
 
 ### 373. Find K Pairs with Smallest Sums
+
+### 496. Next Greater Element I
